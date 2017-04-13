@@ -16,12 +16,17 @@
 def triangle(a, b, c)
   # WRITE THIS CODE
   arr = [a,b,c]
+  sum = arr.inject(0, &:+)
+  begin 
+    raise TriangleError if sum <= 0
+  	raise TriangleError if sum - arr.max  <=  arr.max
   
-  case arr.uniq.length
-    when 1 then :equilateral
-    when 2 then :isosceles
-    when 3 then :scalene
-  end
+    case arr.uniq.length
+      when 1 then :equilateral
+      when 2 then :isosceles
+      when 3 then :scalene
+    end
+   end
 end
 
 # Error class used in part 2.  No need to change this code.
